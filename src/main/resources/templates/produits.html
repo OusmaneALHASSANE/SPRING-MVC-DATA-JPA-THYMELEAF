@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="layout">
+<head>
+<meta charset="utf-8"/>
+<!-- Ici c'est nécessaire d'ajouter le lien th:href.. pour que eclipse puisse connaitre le chemin du fichier -->
+ <!-- link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
+<link rel="stylesheet" type="text/css"
+ href="../static/css/bootstrap.min.css"
+ th:href="@{/css/bootstrap.min.css}">
+<title>PRODUCTS</title>
+</head>
+<body>
+<p></p>
+<div class="col-md-6 col-xs-12 spacer" layout:fragment="content">
+
+
+<form th:action="@{user/index}" method="get" class="form-group">
+
+<label>Mot clé:</label>
+<input type="text" name="mc" th:value="${mc}"/>
+<button class="btn btn-danger">Chercher</button>
+</form>
+<div class="container">
+<div class="card">
+<div class="card-header"><h3>PRODUCT LIST</h3></div>
+<div class="card-body">
+<table class="table table-striped">
+<thead>
+ <tr>
+ <th>ID</th><th>DESIGNATION</th><th>PRICE</th><th>QUANTITY</th>
+ </tr>
+</thead>
+<tbody>
+<tr th:each="p:${listProduits}">
+
+<td th:text="${p.id}"></td>
+
+<td th:text="${p.designation}">
+
+<td th:text="${p.prix}"></td>
+
+<td th:text="${p.quantite}"></td>
+
+<td><a th:href="@{/admin/delete(id=${p.id},page=${pageCourante},size=${size},motCle=${motCle})}">Delete</a></td>
+
+<td><a th:href="@{/admin/editer(id=${p.id})}">Editer</a></td>
+</tr>
+</tbody>
+</table>
+<div class="container">
+<ul class="nav nav-pills">
+<li   th:class="${pageCourante}==${status.index}?'active':''" th:each="pa,status:${pages}">
+<a th:href="@{/user/index(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}"></a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

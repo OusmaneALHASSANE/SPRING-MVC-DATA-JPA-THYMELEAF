@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout.html}">
+<head>
+<meta charset="utf-8"/>
+<!-- Ici c'est nécessaire d'ajouter le lien th:href.. pour que ecclipse puisse connaitre le chemin du fichier -->
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css"
+ href="../static/css/style.css"
+ th:href="@{/css/style.css}">
+<title> ADD PRODUCTS</title>
+</head>
+<body>
+
+<div class="col-md-8 col-xs-12 spacer" layout:fragment="content">
+
+<div class="card card-primary">
+ <div class="card-header">Saisie du texte</div>
+ <div class="card-body">
+<form th:action="@{/admin/save}" method="post" >
+<div class="form-group">
+<label class="control-label">Designation</label>
+<input class="form-control" type="text" name="designation"
+th:value="${produit.designation}"/>
+<span class="red" th:errors="${produit.designation}"></span>
+</div>
+<div class="form-group">
+<label class="control-label">Prix</label>
+<input class="form-control" type="text" name="prix"
+th:value="${produit.prix}"/>
+<span  class="red" th:errors="${produit.prix}"></span>
+</div>
+
+<div class="form-group">
+<label class="control-label">Quantite</label>
+<input class="form-control" type="text" name="quantite"
+th:value="${produit.quantite}"/>
+</div>
+<div>
+<button  type="submit" class="btn btn-primary">Save</button></div>
+</form>
+    
+</div>
+</div>
+</div>
+
+</body>
+</html>

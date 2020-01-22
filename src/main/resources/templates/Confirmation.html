@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<!-- Ici c'est nécessaire d'ajouter le lien th:href.. pour que ecclipse puisse connaitre le chemin du fichier -->
+<!--<link rel="stylesheet" type="text/css"
+ href="../static/css/bootstrap.min.css"
+ th:href="@{css/bootstrap.min.css}">  -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title> ADD PRODUCTS</title>
+</head>
+<body>
+<div class="container">
+
+<div class="card card-primary">
+ <div class="card-header">Confirmation</div>
+ <div class="card-body">
+ <div class="form-group">
+ <label>ID:</label>
+ <label th:text="${produit.id}"></label>
+ </div>
+  <div class="form-group">
+ <label>DESIGNATION:</label>
+ <label th:text="${produit.designation}"></label>
+ </div>
+  <div class="form-group">
+ <label>PRIX:</label>
+ <label th:text="${produit.prix}"></label>
+ </div>
+  <div class="form-group">
+ <label>QUANTITE:</label>
+ <label th:text="${produit.quantite}"></label>
+ </div>
+</div>
+</div>
+</div>
+</body>
+</html>
